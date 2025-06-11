@@ -1,0 +1,66 @@
+@use 'variables';
+@use 'fonts';
+@use 'mixins';
+
+/* 
+modern-normalize.css (https://github.com/sindresorhus/modern-normalize) is build on 
+normalize.css (https://necolas.github.io/normalize.css/), which is a modern, HTML5-ready alternative to CSS resets.
+It aims to make all browsers render all elements more consistently and in line with modern standards. 
+It precisely targets only the styles that need normalizing. 
+(stylesheet: https://github.com/sindresorhus/modern-normalize/blob/main/modern-normalize.css)
+*/
+
+@use 'modernNormalize';
+
+/*
+It addition to modern-normalize.css the tailwind preflight normalize base stylings are added.
+Built on top of modern-normalize, Preflight is a set of base styles for Tailwind projects that are designed to smooth over cross-browser inconsistencies and make it easier for you to work within the constraints of your design system.
+(stylesheet: https://github.com/tailwindlabs/tailwindcss/blob/main/packages/tailwindcss/preflight.css)
+*/
+
+@use 'tailwindPreflight';
+
+/*
+Override some antd default styling
+*/
+
+@use 'antdOverrides';
+
+* {
+  font-family: variables.$font-family-default, sans-serif;
+  color: variables.$color-light;
+  font-size: variables.$font-size-default;
+}
+
+html, body {
+  background: variables.$color-dark;
+}
+
+// LayoutContainer always has default left & right padding
+// layoutOverrideFullWidth enables the component to be full width 
+// (by using negative margin)
+.layoutOverrideFullWidth {
+  margin-left: -(variables.$page-padding-v-mobile);
+  margin-right: -(variables.$page-padding-v-mobile);
+  width: -webkit-fill-available;
+
+  @include mixins.breakpoint-mobile {
+      margin-left: -(variables.$page-padding-v-tablet-portrait);
+      margin-right: -(variables.$page-padding-v-tablet-portrait);
+  }
+  
+  @include mixins.breakpoint-tablet-portrait {
+      margin-left: -(variables.$page-padding-v-tablet-landscape);
+      margin-right: -(variables.$page-padding-v-tablet-landscape);
+  }
+
+  @include mixins.breakpoint-tablet-landscape {
+      margin-left: -(variables.$page-padding-v-desktop);
+      margin-right: -(variables.$page-padding-v-desktop);
+  }
+  
+  @include mixins.breakpoint-desktop {
+      margin-left: -(variables.$page-padding-v-desktop);
+      margin-right: -(variables.$page-padding-v-desktop);
+  }
+}

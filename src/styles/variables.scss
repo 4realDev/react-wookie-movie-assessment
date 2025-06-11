@@ -1,0 +1,87 @@
+// colors
+$color-blue-l1: #b9cfed;
+$color-blue: #658bbe;
+$color-brown-l1: #d9d4c8;
+$color-brown: #9b8b71;
+$color-dark-opacity-25: rgba(18 18 18 / 25%);
+$color-dark-opacity-50: rgba(18 18 18 / 50%);
+$color-dark: #121212;
+$color-error: #f5222d;
+$color-grey-010: #f9f9f9;
+$color-grey-020: #f4f4f4;
+$color-grey-030-opacity-20: rgba(229 229 229 / 20%);
+$color-grey-030: #e5e5e5;
+$color-grey-040: #d2d2d2;
+$color-grey-050: #b4b4b4;
+$color-grey-060: #808080;
+$color-grey-070: #666666;
+$color-grey-080: #515151;
+$color-grey-090: #353535;
+$color-grey-100: #000000;
+$color-light: #ffffff;
+$color-primary-d1: #007465;
+$color-primary-l1: #71afa5;
+$color-primary-l2: #a0cabf;
+$color-primary-l3: #ccddd8;
+$color-primary-l4: #ecf8f7;
+$color-primary: #00917e;
+$color-secondary: #d7f2ea;
+$color-success-l1: #b7eb8f;
+$color-success-l2: #f6ffed;
+$color-success: #52c41a;
+$color-transparent: transparent;
+$color-warning-l1: #ffa39e;
+$color-warning-l1: #ffe58f;
+$color-warning-l2: #fff1f0;
+$color-warning-l2: #fffbe6;
+$color-warning: #f1b034;
+
+// media breakpoints, to be used as min-width
+// keep synched with useBreakpoints.ts
+$media-mobile: 375px;
+$media-tablet-portrait: 768px;
+$media-tablet-landscape: 1024px;
+$media-desktop: 1440px;
+
+// z-index
+// $z-index-layer-1: 1;
+// $z-index-layer-2: 2;
+// $z-index-layer-3: 3;
+// $z-index-layer-4: 4;
+// $z-index-layer-5: 5;
+
+// color aliases
+// $z-index-modal-content: $z-index-layer-5;
+// $z-index-modal-overlay: $z-index-layer-4;
+// $z-index-navigation: $z-index-layer-4;
+
+// fonts
+$font-family-default: Calibre-R, sans-serif;
+$font-family-finacier: 'Test Financier Text', sans-serif;
+$font-size-default: 14px;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 900;
+
+// misc
+$opacity-disabled: 0.4;
+
+// $action-button-max-width-desktop: 360px;
+$page-section-border-bottom: 1px solid $color-grey-030;
+
+$navigation-height-desktop: 60px;
+
+// $page-padding-v-mobile: 24px;
+// $page-padding-h-mobile: 16px;
+// $page-padding-v-desktop: 24px;
+// $page-padding-h-desktop: 48px;
+
+$page-padding-v-mobile: 12px;
+$page-padding-h-mobile: 16px;
+$page-padding-v-tablet-portrait:16px;
+$page-padding-h-tablet-portrait: 24px;
+$page-padding-v-tablet-landscape:24px;
+$page-padding-h-tablet-landscape: 32px;
+$page-padding-v-desktop: 48px;
+$page-padding-h-desktop: 64px;

@@ -1,0 +1,62 @@
+@use "../../styles/mixins";
+
+/* centering all following elements */
+/* space from the sides for arrows to become visible */
+/* display flex to cente slick-list */
+.slick-slider {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    /* remove vertical scrollbars */
+    overflow: hidden;
+  }
+  
+  /* width 80% create some padding between arrows and slides without changing the centering */
+  .slick-list {
+    width: 85%;
+  }
+  
+  /* gap between cards - influences width too */
+  .slick-track {
+    display: flex !important;
+    min-width: 100% !important;
+    gap: 24px;
+  
+    @include mixins.breakpoint-desktop {
+      gap: 24px;
+    }
+
+    @include mixins.breakpoint-tablet-portrait {
+        gap: 16px; 
+    }
+
+    @include mixins.breakpoint-mobile {
+        gap: 24px;
+    }
+  }
+  
+  /* active slide gets slick-current class */
+  // .slick-center {
+  //   position: relative;
+  //   z-index: 99;
+  //   transform: scale(1.1);
+  //   transition: 0.25s;
+  // }
+
+  /* slick-center is the class which is in the center when center=true in settings*/
+
+/* SLIDER ARROW CUSTOMAZITION */
+.custom-prevArrow,
+.custom-nextArrow {
+  position: relative;
+  z-index: 99999;
+  fill: white;
+}
+
+.custom-prevArrow:hover,
+.custom-nextArrow:hover {
+  fill: red;
+  cursor: pointer;
+}

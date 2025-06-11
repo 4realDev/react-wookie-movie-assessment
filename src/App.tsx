@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// npm i @tanstack/react-query
+// npm i @tanstack/react-query-devtools@4
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import React from 'react';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { Router } from './Router';
+import { queryClient } from './api/config/query';
+// import { antdTheme } from './styles';
+// import {ConfigProvider} from 'antd';
+import './styles/global.scss';
+
+const App = () => {
+	// Provide the client to your App -> allows us to use client everywhere in App through QueryClientProvider context (uses reacts useContext logic)
+	// Therefore, we can use all hooks that react-query provides us
+
+	// Load the Router -> Router automatically guides you to the "/" route by default (homepage)
+	return (
+		// <ConfigProvider theme={antdTheme} /*locale={i18next.antdLocales[i18n.language]}*/>
+		<QueryClientProvider client={queryClient}>
+			<ReactQueryDevtools initialIsOpen={false} />
+			<Router />
+		</QueryClientProvider>
+		// <ConfigProvider/>
+	);
+};
 
 export default App;

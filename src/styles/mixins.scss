@@ -1,0 +1,80 @@
+@use 'variables';
+
+@mixin breakpoint-mobile {
+  @media (min-width: variables.$media-mobile) {
+    @content;
+  }
+}
+
+@mixin breakpoint-tablet-portrait {
+  @media (min-width: variables.$media-tablet-portrait) {
+    @content;
+  }
+}
+
+@mixin breakpoint-tablet-landscape {
+  @media (min-width: variables.$media-tablet-landscape) {
+    @content;
+  }
+}
+
+@mixin breakpoint-desktop {
+  @media (min-width: variables.$media-desktop) {
+    @content;
+  }
+}
+
+@mixin font-style-body-3 {
+    font-family: Inter;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: $font-weight-medium;
+    color: $color-black;
+  }
+  
+  @mixin font-style-body-2 {
+    font-family: Inter;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: $font-weight-medium;
+    color: $color-black;
+  }
+  
+  @mixin font-style-body-1 {
+    font-family: Inter;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: $font-weight-medium;
+    color: $color-black;
+  }
+  
+  @mixin font-style-h6 {
+    font-family: Inter;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: $font-weight-bold;
+    color: $color-black;
+  }
+  
+  @mixin font-style-h5 {
+    font-family: Inter;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: $font-weight-extra-bold;
+    color: $color-black;
+  }
+  
+  @mixin font-style-h4 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: $font-weight-extra-bold;
+    color: $color-black;
+  }
+  

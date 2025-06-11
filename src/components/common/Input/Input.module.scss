@@ -1,0 +1,17 @@
+@use '../../../styles/variables';
+
+.input {
+    border: 1px solid variables.$color-light;
+    border-radius: 50px;
+    padding: 8px 24px;
+    color: variables.$color-light;
+    outline: none !important;
+    height: 30px;
+    box-sizing: border-box;
+    background-color: variables.$color-dark;
+    font-size: variables.$font-size-default;
+  
+    ::placeholder {
+      color: variables.$color-grey-020;
+    }
+}

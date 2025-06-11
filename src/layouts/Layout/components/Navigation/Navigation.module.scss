@@ -1,0 +1,22 @@
+@use "../../../../styles/variables.scss";
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: variables.$navigation-height-desktop;
+    background-color: #202020;
+    padding: 4px 16px;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+}
+
+.logo {
+    display:flex;
+    place-content: center;
+    padding: 8px;
+    cursor: pointer;
+    height:100%;
+}

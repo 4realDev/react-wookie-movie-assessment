@@ -1,0 +1,52 @@
+@use '../../../styles/mixins';
+@use '../../../styles/variables';
+
+.layoutContainer {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    padding: variables.$page-padding-h-mobile variables.$page-padding-v-mobile;
+
+    @include mixins.breakpoint-mobile {
+        padding: variables.$page-padding-h-tablet-portrait variables.$page-padding-v-tablet-portrait;
+    }
+    
+    @include mixins.breakpoint-tablet-portrait {
+        padding: variables.$page-padding-h-tablet-landscape variables.$page-padding-v-tablet-landscape;
+    }
+
+    @include mixins.breakpoint-tablet-landscape {
+        padding: variables.$page-padding-h-desktop variables.$page-padding-v-desktop;
+    }
+    
+    @include mixins.breakpoint-desktop {
+        padding: variables.$page-padding-h-desktop variables.$page-padding-v-desktop;
+    }
+
+    &--card {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+
+        &:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+    }
+
+    &--center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+  
+    /* Padding control modifiers */
+    &--noPaddingX {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    
+    &--noPaddingY {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+}

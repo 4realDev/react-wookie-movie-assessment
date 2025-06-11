@@ -1,0 +1,26 @@
+.typography {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  text-align: left;
+
+  // Variant styles
+  &--header {
+    font-size: 32px;
+    line-height: 48px;
+    font-weight: 700;
+  }
+
+  &--subheader {
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 500;
+  }
+
+  &--body {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+}
+  

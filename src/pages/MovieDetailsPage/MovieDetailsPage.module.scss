@@ -1,0 +1,63 @@
+@use "../../styles/mixins.scss";
+
+.loadingSpinnerContainer {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+}
+
+.movieDetailsPageContainer {
+    display: flex;
+    width: 100%;
+    gap: 24px;
+    margin-top: 32px;
+    flex-direction: column;
+
+    @include mixins.breakpoint-tablet-portrait {
+        flex-direction: row;
+    }
+
+    .poster {
+        object-fit:cover;
+        max-height: 100%; /* Prevents images from exceeding container */
+        height: 100%; /* Makes images responsive */
+        /* Maintains aspect ratio */
+        width: 320px;
+        display: block;
+        overflow: hidden;
+    }
+    
+    .movieDescriptionContainer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        
+        @include mixins.breakpoint-tablet-portrait {
+            width: 480px;
+        }
+
+        .movieDescriptionMovieTitleAndRatingWrapper {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 6px;
+
+            .movieTitle {
+                font-size: 24px;
+                font-weight: 600;
+            }
+    
+            .movieRating {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        .movieDescriptionMovieDetailsWrapper {
+            margin-bottom: 18px;
+        }
+    }
+}
+
