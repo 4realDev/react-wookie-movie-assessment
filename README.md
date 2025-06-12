@@ -1,46 +1,224 @@
-# Getting Started with Create React App
+## FRONTEND TO BACKEND (inside src/api)
+### 1. .env File in root directory
+Stores `REACT_APP_BASE\_URL` and `REACT_APP_AUTHORIZATION\_TOKEN` for API calls 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 2. ReactQuery
+- Using ReactQuery for API calls
+- Creating `tanstack/react-query` **queryClient** inside `src/api/config/query.ts`
+- Initiate and pass to App.tsx inside **QueryClientProvider**
 
-## Available Scripts
+### 3. Axios
+- Using Axios for HTTP requests
+- Creating axiosClient with Bearer for authorization and basic errorLog inside `src/api/config/axios.ts`
 
-In the project directory, you can run:
+### 4. Module for movies API requests
+- Using **axiosClient** to fetch movie data from `https://wookie.codesubmit.io/`
+- Using **ReactQuery** **useQuery** hook to cache new movie data and **useMutation** for updating cached data
+- Using **types** for fetched movie Data inside `src/types/types.ts`
 
-### `npm start`
+  *Usage in frontend components/pages:*
+#### **GET** all **movies** or all movies matching **SEARCHQUERY** Parameter
+Used on HomePage in useMovies
+```
+const { data: movies, isLoading: moviesLoading } = 
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+useMovies(searchParams.get('q') ?? '', true);
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+If no searchQuery exists, just GET all existing movies -> `<http://localhost:3000>` \
+If searchQuery exists, GET all movies matching query -> `<http://localhost:3000/?q=badmen>`
 
-### `npm test`
+#### **GET** specific **movie** with **SLUG** (`movies/slug`)
+Used on MovieDetailsPage in useMovie
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```
+   const {
+       data: movie,
+       isError: movieError,
+       isFetching: movieFetching,
+       isLoading: movieLoading,
+   } = useMovie(params.slug!!, true);
+   ```
 
-### `npm run build`
+## FRONTEND
+### 1. Typography component
+Enables quick and consequent usage of text throughout the app with predefined classes: `'header'`, `'subheader'`, `'body'`	
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+<Typography variant='header'>
+   {movie.title}
+</Typography>
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+<Typography variant='subheader' tag='span'>
+    {`${movieYear} | `}
+</Typography>
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. LayoutContainer
+Enables quick and consequent usage of paddings including their changes and adaptions for different media queries throughout the app. \
+Implemented to be used as overall Layout Container as well as generic LayoutContainer for in-page Layouts/Containers. \
+Implementation of an additional class `".layoutOverrideFullWidth"` inside `style/global.scss` to escape LayoutContainer paddings and use components in fullwidth.
 
-### `npm run eject`
+### 3. Layout
+React Best Practice to reuse same Layout with the same page-padding values (`LayoutContainer`), Navigation and Footer for multiple pages \
+(used in `src/Router.tsx` in `createBrowserRouter()` as `"element"`)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+export const Layout = () => {
+    return (
+        <>
+            <Navigation />
+                <div className={classes.content}>
+                    <LayoutContainer>
+                        <Outlet />
+                    </LayoutContainer>
+                </div>
+            <Footer />
+        </>
+    );
+};
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 4. Pages
+React Best Practice with Router, RouterProvider, createBrowserRouter, the pages (inside src/pages) as children, Layout as element and NotFoundPage as errorElement
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 5. Debounce
+Use debounce for search to prevent memory overload or too many expensive operations
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+const handleSearchParamsChange = useCallback(
+    debounce((searchQuery: string) => {
+        setSearchParams(searchQuery ? `?q=${searchQuery}` : '');
+    }),
+    []
+);
+```
 
-## Learn More
+### 6. Styles
+Includes:
+  - global
+  - fonts
+  - mixins
+  - variables
+  - normalization
+  - UI component style overrides
+  - UI component theme
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 7. Assets folder
+Special folder for all assets: divided into fonts, icons and illustrations \
+declarations.d.ts?
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Folder Structure Overview
+
+📦src\
+` `┣ 📂api\
+` `┃ ┣ 📂config\
+` `┃ ┃ ┣ 📜axios.ts\
+` `┃ ┃ ┗ 📜query.ts\
+` `┃ ┗ 📂modules\
+` `┃ ┃ ┗ 📂movies\
+` `┃ ┃ ┃ ┗ 📜index.ts\
+` `┣ 📂assets\
+` `┃ ┣ 📂fonts\
+` `┃ ┃ ┣ 📜calibre-r-web-medium.otf\
+` `┃ ┃ ┣ 📜calibre-r-web-regular.otf\
+` `┃ ┃ ┣ 📜calibre-r-web-semibold.otf\
+` `┃ ┃ ┣ 📜TestFinancierDisplay-Bold.otf\
+` `┃ ┃ ┣ 📜TestFinancierDisplay-Medium.otf\
+` `┃ ┃ ┗ 📜TestFinancierDisplay-Regular.otf\
+` `┃ ┣ 📂icons\
+` `┃ ┃ ┣ 📜FilledStar.tsx\
+` `┃ ┃ ┣ 📜index.ts\
+` `┃ ┃ ┣ 📜Search.tsx\
+` `┃ ┃ ┗ 📜UnfilledStar.tsx\
+` `┃ ┗ 📂illustrations\
+` `┃ ┃ ┗ 📜logo.png\
+` `┣ 📂components\
+` `┃ ┣ 📂common\
+` `┃ ┃ ┣ 📂IconButton\
+` `┃ ┃ ┃ ┣ 📜IconButton.module.scss\
+` `┃ ┃ ┃ ┣ 📜IconButton.tsx\
+` `┃ ┃ ┃ ┗ 📜index.ts\
+` `┃ ┃ ┣ 📂Input\
+` `┃ ┃ ┃ ┣ 📜index.ts\
+` `┃ ┃ ┃ ┣ 📜Input.module.scss\
+` `┃ ┃ ┃ ┗ 📜Input.tsx\
+` `┃ ┃ ┣ 📂LayoutContainer\
+` `┃ ┃ ┃ ┣ 📜index.ts\
+` `┃ ┃ ┃ ┣ 📜LayoutContainer.scss\
+` `┃ ┃ ┃ ┗ 📜LayoutContainer.tsx\
+` `┃ ┃ ┣ 📂LoadingSpinner\
+` `┃ ┃ ┃ ┣ 📜index.ts\
+` `┃ ┃ ┃ ┣ 📜LoadingSpinner.module.scss\
+` `┃ ┃ ┃ ┗ 📜LoadingSpinner.tsx\
+` `┃ ┃ ┗ 📂Typography\
+` `┃ ┃ ┃ ┣ 📜colors.ts\
+` `┃ ┃ ┃ ┣ 📜index.ts\
+` `┃ ┃ ┃ ┣ 📜Typegraphy.scss\
+` `┃ ┃ ┃ ┗ 📜Typography.tsx\
+` `┃ ┣ 📂MovieItem\
+` `┃ ┃ ┣ 📜index.ts\
+` `┃ ┃ ┣ 📜MovieItem.module.scss\
+` `┃ ┃ ┗ 📜MovieItem.tsx\
+` `┃ ┣ 📂SearchBarPress\
+` `┃ ┃ ┣ 📜index.ts\
+` `┃ ┃ ┣ 📜SearchBarPress.module.scss\
+` `┃ ┃ ┗ 📜SearchBarPress.tsx\
+` `┃ ┣ 📂SearchBarRealtime\
+` `┃ ┃ ┣ 📜index.ts\
+` `┃ ┃ ┣ 📜SearchBar.tsx\
+` `┃ ┃ ┗ 📜SearchBarRealtime.module.scss\
+` `┃ ┗ 📂Slider\
+` `┃ ┃ ┣ 📜index.ts\
+` `┃ ┃ ┣ 📜SlickSliderOverrides.scss\
+` `┃ ┃ ┗ 📜Slider.tsx\
+` `┣ 📂constants\
+` `┃ ┗ 📜routes.ts\
+` `┣ 📂layouts\
+` `┃ ┗ 📂Layout\
+` `┃ ┃ ┣ 📂components\
+` `┃ ┃ ┃ ┣ 📂Footer\
+` `┃ ┃ ┃ ┃ ┣ 📜Footer.module.scss\
+` `┃ ┃ ┃ ┃ ┣ 📜Footer.tsx\
+` `┃ ┃ ┃ ┃ ┗ 📜index.ts\
+` `┃ ┃ ┃ ┗ 📂Navigation\
+` `┃ ┃ ┃ ┃ ┣ 📜index.ts\
+` `┃ ┃ ┃ ┃ ┣ 📜Navigation.module.scss\
+` `┃ ┃ ┃ ┃ ┗ 📜Navigation.tsx\
+` `┃ ┃ ┣ 📜index.ts\
+` `┃ ┃ ┣ 📜Layout.module.scss\
+` `┃ ┃ ┗ 📜Layout.tsx\
+` `┣ 📂pages\
+` `┃ ┣ 📂HomePage\
+` `┃ ┃ ┣ 📜HomePage.module.scss\
+` `┃ ┃ ┣ 📜HomePage.tsx\
+` `┃ ┃ ┗ 📜index.ts\
+` `┃ ┣ 📂MovieDetailsPage\
+` `┃ ┃ ┣ 📜index.ts\
+` `┃ ┃ ┣ 📜MovieDetailsPage.module.scss\
+` `┃ ┃ ┗ 📜MovieDetailsPage.tsx\
+` `┃ ┣ 📂NotFoundPage\
+` `┃ ┃ ┣ 📜index.ts\
+` `┃ ┃ ┗ 📜NotFoundPage.tsx\
+` `┃ ┗ 📜index.ts\
+` `┣ 📂styles\
+` `┃ ┣ 📜antdOverrides.scss\
+` `┃ ┣ 📜antdTheme.ts\
+` `┃ ┣ 📜fonts.scss\
+` `┃ ┣ 📜global.scss\
+` `┃ ┣ 📜index.ts\
+` `┃ ┣ 📜mixins.scss\
+` `┃ ┣ 📜modernNormalize.scss\
+` `┃ ┣ 📜tailwindPreflight.scss\
+` `┃ ┣ 📜variables.json\
+` `┃ ┗ 📜variables.scss\
+` `┣ 📂types\
+` `┃ ┗ 📜movie.ts\
+` `┣ 📜App.tsx\
+` `┣ 📜index.tsx\
+` `┗ 📜Router.tsx
+
