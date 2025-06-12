@@ -1,3 +1,44 @@
+# I. TASK
+
+**Objective**
+
+Your assignment is to implement a movie streaming dashboard using JavaScript and React.
+
+**Tasks**
+
+- Implement your frontend app with React
+- Implement a list page as outlined in list.jpg.
+- Group the movies by genres (don't hardcode the genres). Retrieve the data through <http://localhost:3001/movies> 
+- Implement a detail page as outlined in detail.jpg. Retrieve the data through <http://localhost:3001/movies/:slug> 
+- Implement the search. Retrieve the data through [http://localhost:3001/movies?q=${search_term}](http://localhost:3001/movies?q=$%7Bsearch_term%7D) 
+- Use a common routing library and make sure that linking and bookmarking to detail pages work as expected (use the slug and not the id in the url)
+- For authentication pass the header Authorization: Bearer Wookie2019 
+- You may use any state management library of your choice
+- You may use TypeScript
+- You may use SASS, but no CSS-in-JS like styled-components
+
+**Bonus Tasks**
+
+- Make the App responsive
+- Use the movies backdrop image creatively
+- Implement an In-Memory Cache for the API responses
+- Testing
+
+**Design**
+![list](https://github.com/user-attachments/assets/63c0e6f3-0f29-4f18-93f7-671a9bbb123a)
+
+![detail](https://github.com/user-attachments/assets/2746b58e-9419-40fc-8ca1-2c576c09f24c)
+
+**Evaluation Criteria**
+
+- **JavaScript** best practices
+- We're looking for you to produce working code, with enough room to demonstrate how to structure components in a small program.
+- Show us your work through your commit history
+- **Completeness**: did you complete the features?
+- **Correctness**: does the functionality act in sensible, thought-out ways?
+- **Maintainability**: is it written in a clean, maintainable way?
+
+# II. FINDINGS, DOCUMENTATION AND BEST PRACTICES
 ## FRONTEND TO BACKEND (inside src/api)
 ### 1. .env File in root directory
 Stores `REACT_APP_BASE_URL` and `REACT_APP_AUTHORIZATION_TOKEN` for API calls 
