@@ -38,6 +38,13 @@ Your assignment is to implement a movie streaming dashboard using JavaScript and
 - **Correctness**: does the functionality act in sensible, thought-out ways?
 - **Maintainability**: is it written in a clean, maintainable way?
 
+<br/>
+<br/>
+<br/>
+<br/>
+
+---
+
 # II. FINDINGS, DOCUMENTATION AND BEST PRACTICES
 ## FRONTEND TO BACKEND (inside src/api)
 ### 1. .env File in root directory
