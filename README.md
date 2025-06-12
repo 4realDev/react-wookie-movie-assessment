@@ -1,11 +1,9 @@
-# I. TASK
+# I. Classic Assessment Task
 
 **Objective**
-
 Your assignment is to implement a movie streaming dashboard using JavaScript and React.
 
 **Tasks**
-
 - Implement your frontend app with React
 - Implement a list page as outlined in list.jpg.
 - Group the movies by genres (don't hardcode the genres). Retrieve the data through <http://localhost:3001/movies> 
@@ -18,7 +16,6 @@ Your assignment is to implement a movie streaming dashboard using JavaScript and
 - You may use SASS, but no CSS-in-JS like styled-components
 
 **Bonus Tasks**
-
 - Make the App responsive
 - Use the movies backdrop image creatively
 - Implement an In-Memory Cache for the API responses
@@ -30,7 +27,6 @@ Your assignment is to implement a movie streaming dashboard using JavaScript and
 ![detail](https://github.com/user-attachments/assets/2746b58e-9419-40fc-8ca1-2c576c09f24c)
 
 **Evaluation Criteria**
-
 - **JavaScript** best practices
 - We're looking for you to produce working code, with enough room to demonstrate how to structure components in a small program.
 - Show us your work through your commit history
@@ -45,7 +41,7 @@ Your assignment is to implement a movie streaming dashboard using JavaScript and
 
 ---
 
-# II. FINDINGS, DOCUMENTATION AND BEST PRACTICES
+# II. Best Practices, Findings and Documentation
 ## FRONTEND TO BACKEND (inside src/api)
 ### 1. .env File in root directory
 Stores `REACT_APP_BASE_URL` and `REACT_APP_AUTHORIZATION_TOKEN` for API calls 
