@@ -153,8 +153,15 @@ Includes:
   - UI component theme
 
 ### 7. Assets folder
-Special folder for all assets: divided into fonts, icons and illustrations \
-declarations.d.ts?
+Special folder for all assets: divided into `src\assets\fonts`, `src\assets\icons` and `src\assets\illustrations` \
+`.\declaration.d.ts`  allows TypeScript to understand and provide accurate typings for JavaScript, different files and libraries.
+
+```
+declare module '*.scss';
+declare module '*.jpg';
+declare module '*.jpeg';
+declare module '*.png';
+```
 
 ### Folder Structure Overview
 
@@ -220,8 +227,6 @@ declarations.d.ts?
 ` `┃ ┃ ┣ 📜index.ts\
 ` `┃ ┃ ┣ 📜SlickSliderOverrides.scss\
 ` `┃ ┃ ┗ 📜Slider.tsx\
-` `┣ 📂constants\
-` `┃ ┗ 📜routes.ts\
 ` `┣ 📂layouts\
 ` `┃ ┗ 📂Layout\
 ` `┃ ┃ ┣ 📂components\
