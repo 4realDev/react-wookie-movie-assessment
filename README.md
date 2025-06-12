@@ -1,6 +1,6 @@
 ## FRONTEND TO BACKEND (inside src/api)
 ### 1. .env File in root directory
-Stores `REACT_APP_BASE\_URL` and `REACT_APP_AUTHORIZATION\_TOKEN` for API calls 
+Stores `REACT_APP_BASE_URL` and `REACT_APP_AUTHORIZATION_TOKEN` for API calls 
 
 ### 2. ReactQuery
 - Using ReactQuery for API calls
