@@ -61,7 +61,7 @@ Stores `REACT_APP_BASE_URL` and `REACT_APP_AUTHORIZATION_TOKEN` for API calls
 - Using **types** for fetched movie Data inside `src/types/types.ts`
 
   *Usage in frontend components/pages:*
-#### **GET** all **movies** or all movies matching **SEARCHQUERY** Parameter
+#### 4.1 **GET** all **movies** or all movies matching **SEARCHQUERY** Parameter
 Used on HomePage in useMovies
 ```
 const { data: movies, isLoading: moviesLoading } = 
@@ -74,7 +74,7 @@ useMovies(searchParams.get('q') ?? '', true);
 If no searchQuery exists, just GET all existing movies -> `<http://localhost:3000>` \
 If searchQuery exists, GET all movies matching query -> `<http://localhost:3000/?q=badmen>`
 
-#### **GET** specific **movie** with **SLUG** (`movies/slug`)
+#### 4.2 **GET** specific **movie** with **SLUG** (`movies/slug`)
 Used on MovieDetailsPage in useMovie
 
    ```
