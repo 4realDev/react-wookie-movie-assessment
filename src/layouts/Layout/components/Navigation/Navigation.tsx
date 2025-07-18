@@ -2,7 +2,7 @@ import Logo from '../../../../assets/illustrations/logo.png';
 import classes from './Navigation.module.scss';
 import { Link } from 'react-router-dom';
 import SearchBarPress from 'components/SearchBarPress/SearchBarPress';
-import { NavigationRoutes } from 'Router';
+import { NavigationRoutes } from 'constants/routes';
 
 export const Navigation = () => {
 	return (

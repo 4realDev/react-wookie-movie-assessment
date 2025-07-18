@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { IMovie, IMoviesResponse } from 'types/movie';
 import { request } from '../../config/axios';
+import { ApiRoutes } from 'constants/routes';
 
 /*
 useQuery:
@@ -21,9 +22,9 @@ by linking useQuery fetching function with useMutation function, react query aut
 // If searchQuery exists, GET all movies matching query
 const getMovies = async (q: string) => {
 	const result = await request<IMoviesResponse>({
-		url: '/movies',
+		url: ApiRoutes.movies.getByQuery(q),
 		method: 'GET',
-		params: q ? { q } : {},
+		// params: q ? { q } : {},
 	});
 	return result.movies;
 };
@@ -32,7 +33,9 @@ const getMovies = async (q: string) => {
 // slug: end part of URL after backslash ("/"") -> identifies specific page or post
 const getMovieBySlug = async (slug: string) => {
 	await sleep(2000);
-	return request<IMovie>({ url: `movies/${slug ?? ''}` });
+	return request<IMovie>({
+		url: ApiRoutes.movies.getBySlug(slug),
+	});
 };
 
 export const useMovie = (slug: string, enabled = true) => {

@@ -4,17 +4,11 @@ import MovieDetailsPage from 'pages/MovieDetailsPage/MovieDetailsPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { Layout } from './layouts/Layout';
 import AboutPage from 'pages/AboutPage/AboutPage';
+import { NavigationRoutes } from 'constants/routes';
 
 // When you run npm start → NODE_ENV is automatically set to 'development'
 // When you run npm run build → NODE_ENV is automatically set to 'production'
 const baseName = process.env.NODE_ENV === 'production' ? '/react-wookie-movie-assessment' : '';
-
-export enum NavigationRoutes {
-	HOME = '/',
-	MOVIES = '/movies',
-	MOVIE = '/movies/:slug',
-	ABOUT = '/about',
-}
 
 const router = createBrowserRouter(
 	[

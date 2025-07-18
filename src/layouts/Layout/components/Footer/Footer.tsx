@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Footer.module.scss';
 import { Link } from 'react-router-dom';
-import { NavigationRoutes } from 'Router';
+import { NavigationRoutes } from 'constants/routes';
 
 const Footer = () => {
 	return (

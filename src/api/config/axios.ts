@@ -8,8 +8,8 @@ const axiosClient = axios.create({
 	},
 });
 
-export const request = async <T>(options: AxiosRequestConfig) => {
-	const result = await axiosClient<T>(options);
+export const request = async <T>(config: AxiosRequestConfig) => {
+	const result = await axiosClient<T>(config);
 	return result.data;
 };
 
