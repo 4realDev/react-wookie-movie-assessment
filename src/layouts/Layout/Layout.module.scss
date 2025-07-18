@@ -3,10 +3,10 @@
 .layout {
   display: flex;
   flex-direction: column;
-  // height: 100vh;
   overflow: hidden;
 }
 
 .content {
   margin-top: variables.$navigation-height-desktop;
+  min-height: calc(100vh - variables.$navigation-height-desktop);
 }

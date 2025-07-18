@@ -1,9 +1,12 @@
+@use "../../../../styles/variables.scss";
+
 .footer {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 8px;
+    height: variables.$footer-height-desktop;
+    margin-top: 32px;
 
     a {
         text-decoration: none;
