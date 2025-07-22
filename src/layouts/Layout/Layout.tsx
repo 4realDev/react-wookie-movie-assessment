@@ -1,8 +1,8 @@
-import { Navigation } from './components/Navigation/Navigation';
 import classes from './Layout.module.scss';
 import { Outlet } from 'react-router-dom';
 import LayoutContainer from 'components/common/LayoutContainer/LayoutContainer';
-import Footer from './components/Footer/Footer';
+import { Navigation } from './components/Navigation';
+import { Footer } from './components/Footer/Footer';
 
 export const Layout = () => {
 	return (

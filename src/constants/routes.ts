@@ -1,9 +1,9 @@
-export enum NavigationRoutes {
-	HOME = '/',
-	MOVIES = '/movies',
-	MOVIE = '/movies/:slug',
-	ABOUT = '/about',
-}
+export const NavigationRoutes = {
+	HOME: '/',
+	MOVIES: '/movies',
+	MOVIE: '/movies/:slug',
+	ABOUT: '/about',
+} as const;
 
 export const ApiRoutes = {
 	movies: {

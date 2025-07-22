@@ -3,7 +3,7 @@ import classes from './Footer.module.scss';
 import { Link } from 'react-router-dom';
 import { NavigationRoutes } from 'constants/routes';
 
-const Footer = () => {
+export const Footer = () => {
 	return (
 		<div className={classes.footer}>
 			<p>Copyright &copy; 2025</p>
@@ -11,5 +11,3 @@ const Footer = () => {
 		</div>
 	);
 };
-
-export default Footer;
